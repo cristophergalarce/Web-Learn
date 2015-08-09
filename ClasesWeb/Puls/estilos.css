@@ -1,0 +1,207 @@
+/*
+etiqueta {
+#id {
+.clase {
+	atributo: valor;
+}
+
+MODELO DE CAJA
+
+display: inline;
+	No tienen padding ni margin.
+	Las etiquetas pequeñas son INLINE.
+display: block;
+	No tienen nada a la derecha. Se apropian del ancho
+	Todas las etiquetas grandes son BLOCK
+display: inline-block;
+	Tienen padding, margin y otras etiquetas encima.
+	Quita los block de su eje vertical y los alinea horizontalmente.
+position: static;
+	Posicion por defecto de todos html.
+position: relative;
+	La caja toma como punto cero la esquina izquierda superior
+	y adquiere TOP, LEFT, BOTTOM, RIGHT aparte de los margenes.
+	Cuando es relative el contenedor, encierra al absolute contenido.
+position: absolute;
+	Hace que el elemento seleccionado flote encima de todo.
+	Los demas elementos no ven al absolute y viven debajo de el.
+
+*/
+
+a { /* quitar. era solo para aprender al principio */
+	color: #22BBEE; /* cambia el color a los links */
+}
+
+body {
+	background: #EEEEEE;
+	font-family: Arial;
+	font-size: 16px;
+}
+footer {
+	background: #22BCE0;
+	color: rgba(255,255,255,0.5);
+	padding: 1em;
+	text-align: center;
+}
+footer p:first-child /* de un grupo al primer hijo */
+{
+	margin-bottom: 0;
+}
+footer p:last-child /* del mismo grupo el ultimo hijo */
+{
+	margin-top: 0;
+}
+footer p:last-child:after /* despues del contenido */
+{
+	content: " -"
+}
+footer p:last-child:before /* antes del contenido */
+{
+	content: "- "
+}
+header {
+	background: #344455;
+	color: white;
+	overflow: hidden; /* vuelve a contener sus elementos */
+	padding: 0.5em;
+	position: relative;
+	/* margin: 1em; /* solo mostrar */
+}
+header figure {
+	float: left;
+}
+header h1 {
+	font-size: 1.2em; /* em busca el fontsize padre y se proporciona */
+	font-weight: normal;
+	margin: 0 70px 0 0; /* top - rigth - bottom - left. como reloj */
+}
+header #avatar {
+	margin: 0.5em 0.5em 0 0;
+	position: absolute;
+	right: 0; /* si cambio left por right. indico que la prioridad en right */
+	top: 0;
+}
+header #avatar img {
+	border-radius: 50%; /* hace ver una img cuadrada dentro de un circulo */
+	width: 55px;
+}
+header #logo img {
+	border-right: 1px solid gray;
+	margin-right: 0.5em;
+	padding-right: 0.5em; /* usa la mitad del fontsize padre */
+	width: 52px; /* al declarar el ancho el alto es auto */
+}
+nav {
+	background: #80BCA3;
+	position: relative;
+}
+nav ul {
+	list-style: none; /* le quita las viñetas a la lista */
+	margin: 0; /* le quita el margen interior por defecto a la lista */
+	padding: 0; /* le quita margenes con otros elementos */
+}
+nav ul li { /* ya es block */
+	display: inline-block;
+	margin: 0 0.5em 0 0;
+}
+nav ul li a { /* ya es inline */
+	color: white;
+	display: block;
+	padding: 0.5em;
+	text-decoration: none; /* le quita el subrayado a la lista */
+}
+nav ul #publicar_nav {
+	position: absolute;
+	right: 0;
+	top: -0.1em;
+}
+nav ul #publicar_nav a {
+	background: #22BCE0;
+	border-radius: 0.3em;
+	box-shadow: rgba(0,0,0,0.5) 5px 5px 20px;
+	/* RGB+Alfa +X +Y +Difuminado */
+	font-style: italic;
+	padding: 0.6em 1em; /* arriba y abajo + lados */
+	text-shadow: rgba(0,0,0,0.5) 2px 2px 5px;
+
+}
+#contenido
+{
+	margin: 1em;
+}
+.item
+{
+	background: white;
+	border-bottom: 3px solid #22BCE0;
+	margin-bottom: 3em;
+	min-height: 128px;
+	position: relative;
+}
+.autor_item a
+{
+	color: #444;
+	text-decoration: none;
+}
+.autor_item
+{
+	color: #AAA;
+	margin: 0.3em 0 0 0;
+}
+.datos_item
+{
+	margin: 1em 1em 0 0;
+}
+.fecha_item
+{
+	color: #AAA;
+	float: right;
+}
+.tag_item
+{
+	background: #F4502A;
+	border-radius: 0.3em;
+	color: white;
+	display: inline-block;
+	padding: 0.2em 0.5em;
+	text-decoration: none;
+}
+.imagen_item
+{
+	float: left;
+	margin-right: 1em;
+}
+.imagen_item img
+{
+	width: 96px;
+}
+.titulo_item
+{	
+	font-size: 1.2em;
+	font-style: italic;
+	margin-bottom: 0;
+	padding: 0.8em 0 0 0;
+}
+.titulo_item a
+{
+	color: #444;
+	text-decoration: none;
+}
+.votacion
+{
+	background: white;
+	border-radius: 0 0 0.3em 0.3em; /* dos arriba y dos abajo */
+	left: 3%;
+	margin-top: 3px;
+	padding: 0.2em 0.5em;
+	position: absolute;
+	/* lo saca de sus coordenadas y hay que poner su contenedor como relative */
+	top: 100%; /* toma el alto del contenedor */
+	right: 3%;
+
+
+}
+.coment_item,
+.fav_item
+{
+	float: right;
+}

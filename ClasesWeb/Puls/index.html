@@ -4,7 +4,12 @@
 	<!-- este meta charset es para el navegador -->
 	<!-- es una etiqueta sin contenido, solo lleva atributo y valor y se cierra con /> -->
 	<meta charset="utf-8" />
+	<meta name="description" content="holahola" />
 	<title>Puls: Práctica con Platzi</title>
+	<!-- normalize normaliza a los navegadores -->
+	<link rel="stylesheet" href="normalize.css" />
+	<link rel="stylesheet" href="estilos.css" />
+
 </head>
 <body>
 	<header>
@@ -14,7 +19,7 @@
 		<h1>
 			Puls: Práctica del Curso Web
 		</h1>
-		<figure class="avatar">
+		<figure id="avatar">
 			<img src="avatar.jpg" />
 		</figure>
 	</header>
@@ -23,7 +28,8 @@
 			<li><a href="#">Python</a></li>
 			<li><a href="#">Javascript</a></li>
 			<li><a href="#">Django</a></li>
-			<li><a href="#">Node.js</a></li>
+			<li><a href="#">Html5</a></li>
+			<li><a href="#">CSS3</a></li>
 			<li id="publicar_nav"><a href="#">Publicar</a></li>
 		</ul>
 	</nav>
@@ -36,10 +42,10 @@
 			</figure>
 			<h2 class="titulo_item">
 				<a href="#">
-					Título del artículo
+					Flash CC no soporta AS2. Último adiós después de más de diez años
 				</a>
 			</h2>
-			<p class="auto_item">
+			<p class="autor_item">
 				por <a href="#">Cristoph Auguste</a>
 			</p>
 			<div class="datos_item">
@@ -49,15 +55,167 @@
 				<span class="fecha_item">
 					hace <strong>5</strong> minutos
 				</span>
-				<a href="#" class="coment_item">60</a>
-				<a href="#" class="fav_item"></a>
+				
 			</div>
 			<div class="votacion">
-				<a href="#" class="up"></a>
+				<a href="#" class="up">U</a>
 				720
-				<a href="#" class="down"></a>
+				<a href="#" class="down">D</a>
+				<a href="#" class="coment_item">60</a>
+				<a href="#" class="fav_item">X</a>
 			</div>
 		</article>
+
+		<article class="item">
+			<figure class="imagen_item">
+				<img src="imagen_item.jpg" />
+			</figure>
+			<h2 class="titulo_item">
+				<a href="#">
+					Usa módulos del lado cliente con Browserify
+				</a>
+			</h2>
+			<p class="autor_item">
+				por <a href="#">Cristoph Auguste</a>
+			</p>
+			<div class="datos_item">
+				<a href="#" class="tag_item">
+				categoria
+				</a>
+				<span class="fecha_item">
+					hace <strong>5</strong> minutos
+				</span>
+				
+			</div>
+			<div class="votacion">
+				<a href="#" class="up">U</a>
+				720
+				<a href="#" class="down">D</a>
+				<a href="#" class="coment_item">60</a>
+				<a href="#" class="fav_item">X</a>
+			</div>
+		</article>
+
+		<article class="item">
+			<figure class="imagen_item">
+				<img src="imagen_item.jpg" />
+			</figure>
+			<h2 class="titulo_item">
+				<a href="#">
+					Cómo usar la etiqueta template en HTML5
+				</a>
+			</h2>
+			<p class="autor_item">
+				por <a href="#">Cristoph Auguste</a>
+			</p>
+			<div class="datos_item">
+				<a href="#" class="tag_item">
+				categoria
+				</a>
+				<span class="fecha_item">
+					hace <strong>5</strong> minutos
+				</span>
+				
+			</div>
+			<div class="votacion">
+				<a href="#" class="up">U</a>
+				720
+				<a href="#" class="down">D</a>
+				<a href="#" class="coment_item">60</a>
+				<a href="#" class="fav_item">X</a>
+			</div>
+		</article>
+
+		<article class="item">
+			<figure class="imagen_item">
+				<img src="imagen_item.jpg" />
+			</figure>
+			<h2 class="titulo_item">
+				<a href="#">
+					En Mejorando.la decidimos dar 7 días más de Navidad
+				</a>
+			</h2>
+			<p class="autor_item">
+				por <a href="#">Cristoph Auguste</a>
+			</p>
+			<div class="datos_item">
+				<a href="#" class="tag_item">
+				categoria
+				</a>
+				<span class="fecha_item">
+					hace <strong>5</strong> minutos
+				</span>
+				
+			</div>
+			<div class="votacion">
+				<a href="#" class="up">U</a>
+				720
+				<a href="#" class="down">D</a>
+				<a href="#" class="coment_item">60</a>
+				<a href="#" class="fav_item">X</a>
+			</div>
+		</article>
+
+		<article class="item">
+			<figure class="imagen_item">
+				<img src="imagen_item.jpg" />
+			</figure>
+			<h2 class="titulo_item">
+				<a href="#">
+					Automatización de tareas de frontend usando Gulp.js
+				</a>
+			</h2>
+			<p class="autor_item">
+				por <a href="#">Cristoph Auguste</a>
+			</p>
+			<div class="datos_item">
+				<a href="#" class="tag_item">
+				categoria
+				</a>
+				<span class="fecha_item">
+					hace <strong>5</strong> minutos
+				</span>
+				
+			</div>
+			<div class="votacion">
+				<a href="#" class="up">U</a>
+				720
+				<a href="#" class="down">D</a>
+				<a href="#" class="coment_item">60</a>
+				<a href="#" class="fav_item">X</a>
+			</div>
+		</article>
+
+		<article class="item">
+			<figure class="imagen_item">
+				<img src="imagen_item.jpg" />
+			</figure>
+			<h2 class="titulo_item">
+				<a href="#">
+					Material Design en versiones Anteriores a Lollipop
+				</a>
+			</h2>
+			<p class="autor_item">
+				por <a href="#">Cristoph Auguste</a>
+			</p>
+			<div class="datos_item">
+				<a href="#" class="tag_item">
+				categoria
+				</a>
+				<span class="fecha_item">
+					hace <strong>5</strong> minutos
+				</span>
+				
+			</div>
+			<div class="votacion">
+				<a href="#" class="up">U</a>
+				720
+				<a href="#" class="down">D</a>
+				<a href="#" class="coment_item">60</a>
+				<a href="#" class="fav_item">X</a>
+			</div>
+		</article>
+		
 	</section>
 	<footer>
 		<p>
