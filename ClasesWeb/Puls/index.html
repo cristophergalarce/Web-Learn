@@ -5,11 +5,12 @@
 	<!-- es una etiqueta sin contenido, solo lleva atributo y valor y se cierra con /> -->
 	<meta charset="utf-8" />
 	<meta name="description" content="holahola" />
+	<!-- viewport primer valor asume el ancho del device, se separa con comas y espacio para siguiente valor que escala el contenido en el ancho minimo y luego en el ancho maximo -->
+	<meta name="viewport" content="width=device-width, minimun-scale=1, maximun-scale=1" />
 	<title>Puls: Práctica con Platzi</title>
 	<!-- normalize normaliza a los navegadores -->
 	<link rel="stylesheet" href="normalize.css" />
 	<link rel="stylesheet" href="estilos.css" />
-
 </head>
 <body>
 	<header>
@@ -30,9 +31,23 @@
 			<li><a href="#">Django</a></li>
 			<li><a href="#">Html5</a></li>
 			<li><a href="#">CSS3</a></li>
-			<li id="publicar_nav"><a href="#">Publicar</a></li>
+			<li id="publicar_nav"><a class="icon-pen" id="mostrarform" href="#">Publicar</a></li>
 		</ul>
 	</nav>
+	
+	<form action="" id="formulario" >
+		<input type="text" id="titulo" placeholder="Título" required />
+		<input type="url" id="url" placeholder="Link" required />
+		<input type="submit" id="enviar" value="Postear" required />
+	</form>
+
+	<aside>
+		<video width="300" controls autoplay>
+			<source src="lecturas.m4v" type="video/mp4" />
+			<source src="" type="video/ogg" />
+		</video>
+	</aside>
+
 	<!-- un id es unico viene del mundo de html -->
 	<section id="contenido">
 	<!-- una class es repetible y heredable viene del mundo de css -->
@@ -58,11 +73,12 @@
 				
 			</div>
 			<div class="votacion">
-				<a href="#" class="up">U</a>
+				<!-- las clases pueden contener mas de una separas por espacio -->
+				<a href="#" class="up icon-arrow-up"></a>
 				720
-				<a href="#" class="down">D</a>
+				<a href="#" class="down icon-arrow-down"></a>
 				<a href="#" class="coment_item">60</a>
-				<a href="#" class="fav_item">X</a>
+				<a href="#" class="fav_item icon-star"></a>
 			</div>
 		</article>
 
@@ -88,11 +104,11 @@
 				
 			</div>
 			<div class="votacion">
-				<a href="#" class="up">U</a>
+				<a href="#" class="up icon-arrow-up"></a>
 				720
-				<a href="#" class="down">D</a>
+				<a href="#" class="down icon-arrow-down"></a>
 				<a href="#" class="coment_item">60</a>
-				<a href="#" class="fav_item">X</a>
+				<a href="#" class="fav_item icon-star"></a>
 			</div>
 		</article>
 
@@ -118,11 +134,11 @@
 				
 			</div>
 			<div class="votacion">
-				<a href="#" class="up">U</a>
+				<a href="#" class="up icon-arrow-up"></a>
 				720
-				<a href="#" class="down">D</a>
+				<a href="#" class="down icon-arrow-down"></a>
 				<a href="#" class="coment_item">60</a>
-				<a href="#" class="fav_item">X</a>
+				<a href="#" class="fav_item icon-star"></a>
 			</div>
 		</article>
 
@@ -148,11 +164,11 @@
 				
 			</div>
 			<div class="votacion">
-				<a href="#" class="up">U</a>
+				<a href="#" class="up icon-arrow-up"></a>
 				720
-				<a href="#" class="down">D</a>
+				<a href="#" class="down icon-arrow-down"></a>
 				<a href="#" class="coment_item">60</a>
-				<a href="#" class="fav_item">X</a>
+				<a href="#" class="fav_item icon-star"></a>
 			</div>
 		</article>
 
@@ -178,11 +194,11 @@
 				
 			</div>
 			<div class="votacion">
-				<a href="#" class="up">U</a>
+				<a href="#" class="up icon-arrow-up"></a>
 				720
-				<a href="#" class="down">D</a>
+				<a href="#" class="down icon-arrow-down"></a>
 				<a href="#" class="coment_item">60</a>
-				<a href="#" class="fav_item">X</a>
+				<a href="#" class="fav_item icon-star"></a>
 			</div>
 		</article>
 
@@ -208,11 +224,11 @@
 				
 			</div>
 			<div class="votacion">
-				<a href="#" class="up">U</a>
+				<a href="#" class="up icon-arrow-up"></a>
 				720
-				<a href="#" class="down">D</a>
+				<a href="#" class="down icon-arrow-down"></a>
 				<a href="#" class="coment_item">60</a>
-				<a href="#" class="fav_item">X</a>
+				<a href="#" class="fav_item icon-star"></a>
 			</div>
 		</article>
 		
@@ -225,5 +241,8 @@
 			Platzi.com 2015
 		</p>
 	</footer>
+	<!-- hay que tener jquery en nuestro server y no desde internet -->
+	<script src="jquery-1.11.3.min.js"></script>
+	<script src="form.js"></script>
 </body>
 </html>

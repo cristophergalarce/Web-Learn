@@ -19,7 +19,8 @@ display: inline-block;
 position: static;
 	Posicion por defecto de todos html.
 position: relative;
-	La caja toma como punto cero la esquina izquierda superior
+	el elemento toma como punto cero la esquina izquierda superior
+	de la caja directa que lo contiene.
 	y adquiere TOP, LEFT, BOTTOM, RIGHT aparte de los margenes.
 	Cuando es relative el contenedor, encierra al absolute contenido.
 position: absolute;
@@ -27,14 +28,84 @@ position: absolute;
 	Los demas elementos no ven al absolute y viven debajo de el.
 
 */
+/* se linkean src como en el head de html. el link va sin comillas
+para evitar errores de consola si algunos links se obtienen desde ajax
+en el head de html 
+prefix escribe los prefijos y nosotros no
+*/
+@import url(prefixfree.js);
+
+@font-face{
+  font-family: 'Open Sans';
+  src:  url("fuentes/Open-Regular/OpenSans-Regular.eot?v=1.1.0");
+  src:  url("fuentes/Open-Regular/OpenSans-Regular.eot?#iefix&v=1.1.0") format("embedded-opentype"),
+  		url("fuentes/Open-Regular/OpenSans-Regular.woff2?v=1.1.0") format("woff2"),
+  		url("fuentes/Open-Regular/OpenSans-Regular.woff?v=1.1.0") format("woff"),
+  		url("fuentes/Open-Regular/OpenSans-Regular.ttf?v=1.1.0") format("truetype"),
+  		url("fuentes/Open-Regular/OpenSans-Regular.svg?v=1.1.0#Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* begin icon fonts */
+@font-face {
+	font-family: 'puls';
+	/* recordar cambiar la ubicacion */
+	src:url('fuentes/icons/puls.eot?ukehuh');
+	src:url('fuentes/icons/puls.eot?#iefixukehuh') format('embedded-opentype'),
+		url('fuentes/icons/puls.ttf?ukehuh') format('truetype'),
+		url('fuentes/icons/puls.woff?ukehuh') format('woff'),
+		url('fuentes/icons/puls.svg?ukehuh#puls') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'puls';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pen:before {
+	content: "\e600";
+	margin-right: .5em;
+	position: relative;
+	top: .05em;
+}
+.icon-arrow-down:before {
+	content: "\e601";
+}
+.icon-arrow-up:before {
+	content: "\e602";
+}
+.icon-star:before {
+	content: "\e603";
+	margin-right: 0.3em;
+	position: relative;
+	top: .1em;
+}
+/* icon fonts */
+
+
+
 
 a { /* quitar. era solo para aprender al principio */
 	color: #22BBEE; /* cambia el color a los links */
 }
-
+aside
+{
+	display: none; /* no se renderiza, no se carga en la web */
+}
 body {
 	background: #EEEEEE;
-	font-family: Arial;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 }
 footer {
@@ -85,11 +156,31 @@ header #avatar img {
 	border-radius: 50%; /* hace ver una img cuadrada dentro de un circulo */
 	width: 55px;
 }
-header #logo img {
+header #logo
+{
 	border-right: 1px solid gray;
 	margin-right: 0.5em;
 	padding-right: 0.5em; /* usa la mitad del fontsize padre */
+}
+header #logo img
+{
+	transition: .5s;
+	/* este efecto si esta en el contenedor
+	sin el mouse hover vuelve a su estado */
+	/* si estuviera en el hover no se devolveria */
 	width: 52px; /* al declarar el ancho el alto es auto */
+}
+header #logo img:hover
+{
+	/* esta propiedad se aplica a la img directamente
+	no a su contenedor */
+	transform: rotate(360deg);
+	/*
+	-webkit-transform:; 
+	-moz-tranform:;
+	-o-tranform:;
+	-ms-tranform:;
+	*/
 }
 nav {
 	background: #80BCA3;
@@ -98,7 +189,9 @@ nav {
 nav ul {
 	list-style: none; /* le quita las viñetas a la lista */
 	margin: 0; /* le quita el margen interior por defecto a la lista */
-	padding: 0; /* le quita margenes con otros elementos */
+	padding: 0 7em 0 .5em; /* le quita margenes con otros elementos */
+				/* pero luego tuve que hacer que boton publicar no se
+				encimara en el menu */
 }
 nav ul li { /* ya es block */
 	display: inline-block;
@@ -109,11 +202,16 @@ nav ul li a { /* ya es inline */
 	display: block;
 	padding: 0.5em;
 	text-decoration: none; /* le quita el subrayado a la lista */
+	transition: .2s;
+}
+nav ul li a:hover
+{
+	background: #344455;
 }
 nav ul #publicar_nav {
 	position: absolute;
-	right: 0;
-	top: -0.1em;
+	right: .5em;
+	top: -.1em;
 }
 nav ul #publicar_nav a {
 	background: #22BCE0;
@@ -121,14 +219,53 @@ nav ul #publicar_nav a {
 	box-shadow: rgba(0,0,0,0.5) 5px 5px 20px;
 	/* RGB+Alfa +X +Y +Difuminado */
 	font-style: italic;
-	padding: 0.6em 1em; /* arriba y abajo + lados */
+	padding: .8em 1em; /* arriba y abajo + lados */
 	text-shadow: rgba(0,0,0,0.5) 2px 2px 5px;
-
 }
+nav ul #publicar_nav a:hover
+{
+	background: #353535;
+}
+
+/* ID */
+
 #contenido
 {
 	margin: 1em;
 }
+#formulario
+{
+	display: none;
+	padding: 1em;
+	text-align: right;
+}
+#formulario input
+{	
+	border: 1px solid #C0C0C0;
+	border-radius: .3em;
+	padding: .3em .5em;
+}
+#formulario input[type="submit"]
+{	
+	background: #22BCE0;
+	border-color: #22BCE0;
+	box-shadow: rgba(0,0,0,0.5) 5px 5px 20px;
+	/* RGB+Alfa +X +Y +Difuminado */
+	color: white;
+	font-style: italic;
+	font-weight: lighter;
+	text-shadow: rgba(0,0,0,0.5) 2px 2px 5px;
+	transition: .2s;
+}
+#formulario input[type="submit"]:hover
+{
+	background: #353535;
+	border-color: #353535;
+}
+
+
+/* CLASS */
+
 .item
 {
 	background: white;
@@ -150,6 +287,14 @@ nav ul #publicar_nav a {
 .datos_item
 {
 	margin: 1em 1em 0 0;
+}
+.down
+{
+	color: red;
+}
+.fav_item
+{
+	color: #FFBE2C;
 }
 .fecha_item
 {
@@ -186,6 +331,14 @@ nav ul #publicar_nav a {
 	color: #444;
 	text-decoration: none;
 }
+.up
+{
+	color: green;
+}
+.votacion a
+{
+	text-decoration: none;
+}
 .votacion
 {
 	background: white;
@@ -197,11 +350,49 @@ nav ul #publicar_nav a {
 	/* lo saca de sus coordenadas y hay que poner su contenedor como relative */
 	top: 100%; /* toma el alto del contenedor */
 	right: 3%;
-
-
 }
 .coment_item,
 .fav_item
 {
 	float: right;
 }
+
+
+/* esto es responsive
+se invoca el media query que afecte al monitor y con tamaños minimos */
+@media screen and (min-width: 800px){
+
+#contenido
+{
+	overflow: hidden; /* los floats quedan dentro de su contenedor */
+}
+#contenido .item
+{
+	width: 49%;
+	float: left; /* quedan flotando sin importar su contenedor */
+}
+/* dentro del parentesis se selecciona con numeros los hijos
+requeridos. con "odd" los impares y hay mas
+*/
+#contenido .item:nth-child(odd){
+	background: red;
+	margin-right: 2%;
+}
+
+}/* no quitar */
+
+@media screen and (min-width: 950px){
+
+	aside
+	{
+		display: block; /* aparece */
+		float: right;
+		margin: 1em;
+		width: 25%; /* se proporciona al navegador */
+	}
+	aside video
+	{
+		width: 100%; /* se proporciona al padre */
+	}
+
+}/*no quitar*/
