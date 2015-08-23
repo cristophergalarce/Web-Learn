@@ -375,7 +375,6 @@ se invoca el media query que afecte al monitor y con tamaños minimos */
 requeridos. con "odd" los impares y hay mas
 */
 #contenido .item:nth-child(odd){
-	background: red;
 	margin-right: 2%;
 }
 
