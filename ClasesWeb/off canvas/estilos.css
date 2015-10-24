@@ -1,0 +1,29 @@
+.Contenedor{
+	width: 200px;
+	height: 200px;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+.mensaje{
+	width: 200px;
+	position: absolute;
+	left: -200px;
+	-webkit-transition: .5s;
+	-o-transition: .5s;
+	-moz-transition: .5s;
+	-ms-transition: .5s;
+	transition: .5s;
+}
+.mensaje.activo{
+	left: 0;
+}
+.boton{
+	display: none;
+	margin: 0 auto;
+}
+.boton.activo{
+	display: block;
+	margin: 0 auto;
+}

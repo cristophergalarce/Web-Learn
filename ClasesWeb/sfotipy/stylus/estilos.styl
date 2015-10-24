@@ -1,0 +1,253 @@
+// Importar otras hojas de estilos
+@import "nib"
+@import "normalize.styl"
+@import "fonts.styl"
+
+// Variables
+amarillo = #FFD400
+gris-claro = #818181
+gris-mas-claro = #e2e2e2
+gris-oscuro = #333333
+
+a
+	text-decoration none
+body
+	font-size 16px
+img
+	vertical-align top //quita ese espacio baseline
+// oocss
+.accion
+	color white
+	font-size 1.2em
+	margin-right .5em
+	&:last-child
+		margin-right 0
+.acciones
+	background rgba(black,.3)
+	bottom 0 //fuerza la caja a colocarse abajo
+	left 0 //fuerza la caja a la izq
+	position absolute
+	right 0 //junto a left fuerzan la caja al 100% de su padre
+.boton-menu
+	color gris-oscuro
+	left .5em
+	margin-top -6px //posiciona mejor el elemento
+	position absolute //corresponde a su padre relative
+	top 50% //propiedad de position absolute
+.border-bottom
+	border-bottom 1px solid gris-claro
+.cancion
+	display inline-block //propiedad de texto
+	font-size 1rem
+	margin-bottom 1em
+	margin-right 1em
+	text-align left
+	&:nth-child(even) //elementos anidados
+		margin-right 0
+	p //es lo más común y así se ahorra código
+		margin .5em 0
+.center-block
+	margin 0 auto //funciona solo si se declara un width
+.center-text
+	text-align center
+.contenedor
+	font-size 0
+	padding 1.4rem
+	text-align center
+.header
+	height 3.5em
+	.titulo
+		font-size 1.1em
+		line-height 3.5em //centra el texto y corresponde a su contenedor cuando sea solo una linea
+		margin 0
+		text-align center
+.imagen
+	margin 0
+.gris
+		color gris-claro
+.nombre
+	color gris-oscuro
+.autor
+	color gris-claro
+.menu
+	display none
+.relative
+	position relative
+.right-text
+	text-align right
+.padding
+	padding 1em
+.padding-topbottom
+	padding 1em 0
+.playing
+	&.small
+		width 20em
+.progreso
+	margin 2em 0
+	.inicio
+	.fin
+		font-size .8em
+		position absolute
+		top -5px
+	.inicio
+		left 0
+	.fin
+		right 0
+	.total
+		height 5px
+		background gris-claro
+		width 70%
+	.estado
+		background amarillo
+		height 5px
+		width 15%
+		animation 10s progreso infinite linear, 1s parpadeo infinite linear
+	.circulo
+		background gris-oscuro
+		border-radius 50%
+		height 10px
+		position absolute
+		right -5px
+		top -50%
+		width 10px
+		animation 1s circulo infinite linear
+@keyframes progreso
+	0%
+		width 0%
+	100%
+		width 100%
+@keyframes parpadeo
+	0%
+		background red
+	100%
+		background amarillo
+@keyframes circulo
+	0%
+		transform scale(1)
+	50%
+		transform scale(3)
+	100%
+		transform scale(2)
+		opacity 0
+
+.left
+	float left //elementos quedan flotando. arreglar el padre con overflow hidden. esto respeta la caja.
+.right
+	float right
+.redondeado
+	border-radius 50% //se debe declarar un ancho y alto. y debe ser cuadrado equilatero
+	overflow hidden //refuerza los bordes dentro de las medidas declaradas. atrae al origen a sus floats.
+	//clearfix() de nib hace lo mismo que overflow pero genera mas codigo > before y after mas display table y both.
+.input
+	border 1px solid gris-claro
+	border-radius .3em
+	height 2.5em
+	padding 0 1em 0 2.3em
+.buscar
+	color gris-claro
+	margin-left .6em //nace y se apega a la izquierda. es mejor con margen.
+	position absolute
+	top .8em
+.cerrar-icono
+	color gris-claro
+	font-size 1.2em
+	position absolute
+	right .5em //a diferencia del margen. es mejor para forzar a colocarse desde la derecha
+	top .5em
+
+.clase
+	transition tiempo propiedad-afectada
+	&:hover
+		propiedad valor
+//transition funciona cuando hay un cambio de estado.
+
+/*max-width
+sirve para mostly fluid. declara un ancho maximo fijo y respeta la buena presentacion en viewports mas pequeños
+
+display inline-block
+adquiere interletrado basico y se podriasn ver las cajas con un espaciado demas.
+el padre debe tener font-size 0
+y sus hijos o van al rem o tienen nuevo font-size
+
+
+off canvas
+
+la caja que va fuera tiene
+position absolute
+y tamaño definido
+se le resta su tamaño para quitarlo del canvas
+Canvas contenedor debe ocultar todo lo que se salga con
+overflow hidden
+y hacer flotar los canvas absolutos en el Canvas contenedor con
+posicion relativa
+con transition se anima la aparicion del absolute de su estado 1 al estado 2 con subclase (oocss)
+Para darle acción se hace en javascript
+
+anchor tiene display inline
+es cliqueable solo su texto
+al tener display block
+se hace cliqueable toda su caja
+y con inline-block se colocan uno al lado del otro
+
+*/
+
+
+@media screen and (min-width:480px)
+	.cancion
+		&:nth-child(even)
+			margin-right 1em
+	.imagen
+		img
+			width 100%
+			height auto
+	.playing
+		&.medium
+			width auto // mejor práctica
+			
+@media screen and (min-width:1000px)
+	.boton-menu
+		display none
+	.header
+		height auto // tanto none auto es porque se hacen las cosas bien
+		.titulo
+			display none
+	.isotipo
+		width 122px
+	.logo
+		overflow hidden
+		padding 1.3em
+		width 1000px
+	.avatar
+		margin 0
+		width 38px
+		height 38px
+	.usuario
+		color gris-claro
+		margin-left .5em
+		position relative
+		top 10px
+		&:after // asi se hacen los triangulos
+			border-left 7px solid transparent
+			border-right 7px solid transparent
+			border-top 9px solid gris-claro
+			content "" //obligatorio
+			display inline-block //lo coloca hacia el lado. como texto
+			margin-left .4em
+	.menu
+		background gris-mas-claro
+		display block //aparece
+		overflow hidden
+		.lista
+			width 1000px
+			padding-left 0
+			.item
+				float left
+				list-style none
+				a
+					border-top 5px solid transparent
+					color gris-oscuro
+					display block
+					padding 1em
+					text-transform uppercase
+					&:hover
+						border-top 5px solid gris-oscuro

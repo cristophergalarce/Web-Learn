@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Te amo Feñita</title>
+
+	<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<div class="Contenedor">
+	<p>¿Te digo algo?</p>
+	<button class="boton activo" id="showMensaje">
+		Cliquéame para saber
+	</button>
+	<button class="boton" id="hideMensaje">
+		Oculta el mensaje
+	</button>
+	<div class="mensaje" id="mensaje">
+		<p>Te amo Feñita vida mía</p>
+	</div>	
+</div>
+	<script src="hammer.min.js"></script>
+	<script>
+	/* este if activa el script off canvas cuando se cumpla el mediaquery
+
+		if(window.matchMedia("(max-width:768px)").matches){
+			//colocar aqui todo el script de menu off canvas
+		};
+
+	*/
+		var $botonShowMensaje = document.querySelector('#showMensaje');
+		var $botonHideMensaje = document.querySelector('#hideMensaje');
+		var $mensaje = document.querySelector('#mensaje');
+		//crear variable body que seleccione el tag body
+		var $body = document.querySelector('body');
+		//crear nueva instancia de hammer que escuche mi variable body
+		var body = new Hammer($body);
+
+		/*
+		body.on('panleft panright', function(){
+			console.log('un pan!');
+		})
+		*/
+
+		var showMensaje = function(){
+			$botonShowMensaje.classList.remove('activo');
+			$botonHideMensaje.classList.add('activo');
+			$mensaje.classList.add('activo');
+		}
+		var hideMensaje = function(){
+			$botonShowMensaje.classList.add('activo');
+			$botonHideMensaje.classList.remove('activo');
+			$mensaje.classList.remove('activo');
+		}
+		$botonShowMensaje.addEventListener("click", showMensaje);
+		$botonHideMensaje.addEventListener("click", hideMensaje);
+
+		//con .on se llama un evento. se coloca el evento, y el manejador, que viene siendo la funcion que ya tengo
+		body.on('panright', showMensaje);
+		body.on('panleft', hideMensaje);
+
+	</script>
+</body>
+</html>
