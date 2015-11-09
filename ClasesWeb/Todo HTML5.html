@@ -1,0 +1,32 @@
+<!-- este meta charset es para el navegador -->
+<!-- es una etiqueta sin contenido, solo lleva atributo y valor y se cierra con /> -->
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<!-- viewport primer valor asume el ancho del device, se separa con comas y espacio para siguiente valor que escala el contenido en el ancho minimo y luego en el ancho maximo -->
+	<meta name="viewport" content="width=device-width, minimun-scale=1, maximun-scale=1" />
+<!-- normalize normaliza a los navegadores -->
+	<link rel="stylesheet" href="normalize.css" />
+
+
+	<!-- un id es unico viene del mundo de html -->
+	<section id="contenido">
+	<!-- una class es repetible y heredable viene del mundo de css -->
+		<article class="item">
+	<!-- las clases pueden contener mas de una separas por espacio -->
+		<a class="up icon-arrow-up"></a>
+
+	<form action="" id="formulario" >
+		<input type="text" id="titulo" placeholder="Título" required />
+		<input type="url" id="url" placeholder="Link" required />
+		<input type="submit" id="enviar" value="Postear" required />
+	</form>
+
+	<video width="300" controls autoplay>
+		<source src="lecturas.m4v" type="video/mp4" />
+		<source src="" type="video/ogg" />
+	</video>
+
+	<span>no tiene semántica, solo otorga un espacio para configurar en css</span>
+	<strong>indica que un texto es importante, pero no negrita</strong>
+
+<!-- hay que tener jquery en nuestro server y no desde internet -->
+	<script src="jquery-1.11.3.min.js"></script>

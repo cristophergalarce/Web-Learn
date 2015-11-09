@@ -1,0 +1,150 @@
+/*
+etiqueta {
+#id {
+.clase {
+	atributo: valor;
+}
+
+MODELO DE CAJA
+
+display: inline;
+	No tienen padding ni margin.
+	Las etiquetas pequeñas son INLINE.
+display: block;
+	No tienen nada a la derecha. Se apropian del ancho
+	Todas las etiquetas grandes son BLOCK
+display: inline-block;
+	Tienen padding, margin y otras etiquetas encima.
+	Quita los block de su eje vertical y los alinea horizontalmente.
+	adquiere interletrado basico y se podriasn ver las cajas con un espaciado demas.
+	el padre debe tener font-size 0
+	y sus hijos o van al rem o tienen nuevo font-size
+position: static;
+	Posicion por defecto de todos html.
+position: relative;
+	el elemento toma como punto cero la esquina izquierda superior
+	de la caja directa que lo contiene.
+	y adquiere TOP, LEFT, BOTTOM, RIGHT aparte de los margenes.
+	Cuando es relative el contenedor, encierra al absolute contenido.
+position: absolute;
+	Hace que el elemento seleccionado flote encima de todo.
+	Los demas elementos no ven al absolute y viven debajo de el.
+
+*/
+/* se linkean src como en el head de html. el link va sin comillas
+para evitar errores de consola si algunos links se obtienen desde ajax
+en el head de html 
+prefix escribe los prefijos y nosotros no
+*/
+@import url(prefixfree.js);
+
+a {
+	color: #22BBEE;
+	/* cambia el color a los links */
+	text-decoration: none;
+	/* le quita el subrayado a los links */
+	box-shadow: rgba(0,0,0,0.5) 5px 5px 20px;
+	/* RGB+Alfa +X +Y +Difuminado */
+}
+.class
+{
+	display: none;
+	/* no se renderiza, no se carga en la web */
+	color: rgba(255,255,255,0.5);
+	/* los tres colores del rgb mas transparencia: alfa */
+	overflow: hidden;
+	/* vuelve a contener sus elementos */
+	/* los floats quedan dentro de su contenedor */
+	/* refuerza los bordes dentro de las medidas declaradas. atrae al origen a sus floats */
+	font-size: 1.2em;
+	/* em busca el fontsize padre y se proporciona */
+	margin: 0 70px 0 0;
+	/* top - rigth - bottom - left. como reloj */
+	right: 0;
+	/* si cambio left por right. indico que la prioridad en right */
+	width: 52px;
+	/* al declarar el ancho el alto es auto */
+	border-radius: 0 0 0.3em 0.3em;
+	/* dos arriba y dos abajo */
+	position: absolute;
+	/* lo saca de sus coordenadas y hay que poner su contenedor/padre como relative */
+	top: 100%;
+	/* toma el alto del contenedor */
+	float: left;
+	/* quedan flotando sin importar su contenedor */
+	clear: left;
+	/* se usa para separar la caja actual de las cajas floats cercanas para que no se pongan encima y se declara igual que float, tanto left o right o ambos: both */
+	/* pero es mejor usar display: inline-block; en lugar de float: left;. asi para no usar el clear en la caja siguiente */
+	transform: skewY(0deg);
+	/* genial para efectos de sesgado o inclinado */
+	clip-path: polygon(0px 0px, 0% 0%, 0 0, 0 0);
+	/* sirve para dibujar un polígono. dos coordenadas de X e Y para cada vértice. responde al width o height */
+}
+.class img
+{
+	border-radius: 50%;
+	/* hace ver una img cuadrada dentro de un circulo */
+	/* se debe declarar un ancho y alto. y debe ser cuadrado equilatero */
+	transition: .5s;
+	/* este efecto se devuelve a su estado original si el mouse ya no está encima */
+	/* si estuviera en el estado hover el efecto no se devolveria */
+	/* necesito de otro estado como el hover para hacer otro efecto */
+}
+.class img:hover
+{
+	transform: rotate(360deg);
+	/* esta propiedad se aplica a la img directamente
+	no a su contenedor */
+}
+
+
+ul
+{
+	list-style: none;
+	/* le quita las viñetas a la lista */
+	margin: 0;
+	/* le quita el margen interior por defecto a la lista */
+	padding: 0 0 0 0;
+	/* a las listas también se le configurar sus márgenes interiores */
+}
+ul li { /* ya es block */
+	display: inline-block;
+}
+ul li a { /* ya es inline */
+	display: block;
+	/* se usa para poner los items en sentido vertical */
+}
+
+.class:first-child /* de un grupo al primer hijo */
+{
+
+}
+.class:last-child /* del mismo grupo el ultimo hijo */
+{
+
+}
+.class:last-child:after /* despues del contenido */
+{
+	content: "";
+	/* se usa para agregar elementos de diseño y no semánticos */
+	/* debe tener el content aunque esté vacío */
+}
+.class:last-child:before /* antes del contenido */
+{
+
+}
+.class:nth-child(odd){
+/* dentro del parentesis se selecciona con numeros los hijos
+requeridos. con "odd" los impares y hay mas
+*/
+}
+
+/* esto es responsive
+se invoca el media query que afecte al monitor y con tamaños minimos */
+@media screen and (min-width: 800px){
+	.class
+	{
+		display: block;
+		/* hace aparecer lo que está display:none más arriba */
+	}
+}
