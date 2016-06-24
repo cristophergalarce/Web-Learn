@@ -1,6 +1,9 @@
-<h1>Hola hola RoR</h1>
-<p>Aprendiendo Ruby on Rails</p>
+<% if user_signed_in? %>
+<h1>Wena wena <%= current_user.email %></h1>
+<p>Lorea lo que voy aprendiendo con Ruby on Rails</p>
 
 <% %> <!-- codigo que se evalua -->
 
 <%= %> <!-- codigo que se imprime -->
+
+<%end%>

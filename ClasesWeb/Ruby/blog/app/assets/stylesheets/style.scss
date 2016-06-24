@@ -8,15 +8,21 @@ html, body{
 .white{
 	color: #FAEBE5;
 }
-.top-space{
-	margin-top: 1em;
+.red{
+	color: red !important;
+}
+.lightblue{
+	color: lightblue !important;
 }
 .large-padding{
 	padding: 15px 10px;
 }
+.text-left{
+	text-align: left;
+}
 a,a:visited{
 	text-decoration: none;
-	color: #FAEBE5;
+	color: inherit;
 }
 .no-margin{
 	margin: 0px;
@@ -24,7 +30,7 @@ a,a:visited{
 .logo{
 	font-size: 1.2em;
 }
-.field{
+.field, .top-space, .actions{
 	margin-top: 1em;
 }
 .form-control{

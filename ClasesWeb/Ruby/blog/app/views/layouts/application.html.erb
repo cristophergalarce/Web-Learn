@@ -9,30 +9,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-	<header>
-		<nav class="be-red white large-padding">
-			<ul class="no-list row center-xs middle-xs">
-				<li class="col-md">
-					<h1 class="no-margin logo">
-						Blog en RoR
-					</h1>
-				</li>	
-				<li class="col-md">
-					<%= link_to "Inicio", root_path %>
-				</li>
-				<li class="col-md">
-					Diseño
-				</li>
-				<li class="col-md">
-					Programacion
-				</li>
-				<li class="col-md">
-					Tecnologia
-				</li>
-			</ul>
-		</nav>
-	</header>
+	<%= render "partials/nav" %>
+	<!-- Flash messages (from devise) -->
+	<p class="notice red"><%= notice %></p>
+    <p class="alert red"><%= alert %></p>
 
 <%= yield %>
 
