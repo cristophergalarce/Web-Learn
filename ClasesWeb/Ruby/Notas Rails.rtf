@@ -1,12 +1,480 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf130
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier-Bold;}
 {\colortbl;\red255\green255\blue255;}
-\margl1440\margr1440\vieww9100\viewh12820\viewkind0
+\margl1440\margr1440\vieww6520\viewh12960\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
-\f0\fs24 \cf0 t\
+\f0\fs24 \cf0 CREAR APLICACI\'d3N RUBY ON RAILS\
 \
 
-\f1\b .lenght\
+\f1\b rails new nombre\
 
-\f0\b0 t}
+\f0\b0 nombre que se le pone a la carpeta\
+\
+
+\f1\b app > controller | models | views\
+config\
+db
+\f0\b0 \
+lo que m\'e1s se trabaja en RoR\
+\
+
+\f1\b rails s(erver)\
+
+\f0\b0 corre en WEBrick\
+\
+
+\f1\b rails g controller welcome index\
+
+\f0\b0 la ruta es /welcome/index\
+\
+genera el archivo 
+\f1\b welcome_controller.rb\
+
+\f0\b0 con el m\'e9todo/acci\'f3n 
+\f1\b index\
+def index\
+
+\f0\b0 tambi\'e9n genera una vista 
+\f1\b index.html.erb
+\f0\b0 \
+\
+
+\f1\b \
+
+\f0\b0 ERB Y ASSETS
+\f1\b \
+\
+
+\f0\b0 en archivos .
+\f1\b html.erb 
+\f0\b0 los tag\
+
+\f1\b <% c\'f3digo de ruby que no se muestra %>\
+<% end %>\
+
+\f0\b0 se cierra con end
+\f1\b \
+<%= c\'f3digo de ruby que adem\'e1s se muestra %>\
+
+\f0\b0 ej:\
+
+\f1\b <% name = "cristoph" %>\
+<%= "Hola #\{name\} %>\
+<% end %>\
+
+\f0\b0 mostrar\'e1 en html:\
+
+\f1\b Hola Cristoph\
+
+\f0\b0 \
+
+\f1\b ERB\
+
+\f0\b0 es un engine de ruby para funcionar en html. el que est\'e1 arriba\
+
+\f1\b HAML\
+
+\f0\b0 es otro engine\
+\
+MODELO\
+\
+
+\f1\b rails g model|scaffold|controller|migration\
+
+\f0\b0 son los generadores que hay. hay otros m\'e1s. revisar en 
+\f1\b rails g -h
+\f0\b0 \
+\
+
+\f1\b rails g model Nombretabla campo1 campo2:text campo3:integer\
+
+\f0\b0 el modelo es importante nombrarlo en singular y recomendable en ingl\'e9s.\
+para que rails aporte con el plural \
+genera una tabla que contiene los campos indicados.\
+*la convenci\'f3n del ingl\'e9s solo rige para el nombre de la tabla/modelo. hasta ahora no existe para los nombres dados de cada campo.\
+\
+
+\f1\b rails g model Article title body:text visits_count:integer\
+
+\f0\b0 el campo1 es por defecto :string\
+el campo2 es :text porque es mayor\
+el campo3 es :integer un numero entero\
+\
+
+\f1\b < ActiveRecord::Base\
+
+\f0\b0 hereda los m\'e9todos del Active Record\
+
+\f1\b Tabla.all\
+
+\f0\b0 permite obtener todos los registros de la 
+\f1\b Tabla.
+\f0\b0  en la base de datos\
+( Tabla. es igual a la clase controlador en los archivos de la carpeta models )\
+\
+BASE DE DATOS\
+\
+
+\f1\b rake db:migrate\
+
+\f0\b0 ejecuta las migraciones que est\'e1n en el archivo de la base de datos\
+\
+
+\f1\b rake db:create\
+
+\f0\b0 Se usa cuando se quiere usar otro tipo de base de datos reemplazando SQLITE3 que es la bd por defecto.\
+crea una base de datos con el nombre especificado en el archivo 
+\f1\b database.yml 
+\f0\b0 secci\'f3n 
+\f1\b database: nombre 
+\f0\b0 y un grupo en 
+\f1\b gemfile 
+\f0\b0 llamado asi\
+
+\f1\b group :test do\
+	gem 'sqlite3'\
+end\
+
+\f0\b0 le dice a rails que solo ejecute la base de datos con sqlite3 cuando el entorno sea de test\
+\
+
+\f1\b rake db:rollback\
+
+\f0\b0 ejecuta lo inverso a las acciones que est\'e9n en las migraciones.\
+y funciona como Ctrl+Z: deshace la \'faltima migraci\'f3n ejecutada.\
+\
+MIGRACIONES\
+\
+archivos que contienen funciones de ruby sobre las tablas de datos creadas anteriormente.\
+Permiten migrar los comandos creados a base de datos sin tener que tocar base de datos.\
+\
+
+\f1\b rails console\
+
+\f0\b0 ejecuta la consola especial de rails para probar los comandos y consultas a la base de datos que aun no se muestran en las vistas pero la base de datos ejecuta de todas formas\
+\
+LAYOUTS\
+\
+
+\f1\b <%= link_to "Inicio", root_path %>\
+
+\f0\b0 crea un anchor_text con texto indicado entre comillas, y lo dirige a la url indicada\
+\
+
+\f1\b <%= link_to "Eliminar", article, method: :delete %>\
+
+\f0\b0 crear un anchor con el texto indicado, que toma la variable local article y elimina el que este clickeando\
+\
+ROUTES\
+\
+
+\f1\b config > routes.rb\
+get 'welcome/index'\
+
+\f0\b0 logra que en el browser se acceda a esa vista con ese mismo path\
+\
+
+\f1\b root 'welcome#index'\
+
+\f0\b0 establece como la ruta ra\'edz de la app\
+el controlador y su acci\'f3n\
+\
+
+\f1\b get 'welcome/index'\
+
+\f0\b0 accede a esa vista por medio de ese path\
+\
+
+\f1\b get 'nuevo', to: "welcome#index"\
+
+\f0\b0 se puede crear un nuevo path que enmascare al controlador# y su #m\'e9todo\
+\
+
+\f1\b resources :articles\
+
+\f0\b0 es lo mismo que declarar todas las llamadas de HTTP y sus path, de las acciones CRUD\
+\
+
+\f1\b resources :articles, only:/except: [:index, :create, :new, :show, :edit; :update, :destroy]\
+
+\f0\b0 e\
+\
+CONTROLLERS\
+\
+
+\f1\b application_controller.erb\
+
+\f0\b0 por defecto todos los nuevos controladores generados heredan a \'e9ste\
+\
+
+\f1\b rails g(enerate) controller nombre m\'e9todo\
+
+\f0\b0 hay que usar nombres en ingles para que Rails aporte con plurales\
+ej:\
+
+\f1\b rails g controller welcome index\
+
+\f0\b0 la ruta es /welcome/index = welcome#index\
+\
+
+\f1\b nombre_controller.rb\
+
+\f0\b0 tambi\'e9n se puede crear un nuevo archivo como controlador\
+\
+
+\f1\b class NombreController < ApplicationController\
+
+\f0\b0 en Sublime Text se puede hacer el atajo\
+\
+
+\f1\b def index\
+end\
+
+\f0\b0 se debe definir las acciones que deber\'e1 llevar este controlador\
+\
+
+\f1\b @articles\
+
+\f0\b0 dentro de las acciones se guardan las peticiones al ActiveRecord en variables de clase.\
+se puede acceder a ellas desde Controllers y Views\
+\
+las variables sin @ pertenecen solo al archivo en donde est\'e9n.\
+\
+
+\f1\b rails console\
+Article.create(title: "hola post", body: "post con consola rails", visits_count: 0)\
+
+\f0\b0 permite crear un articulo por medio de la consola con el metodo 
+\f1\b .create 
+\f0\b0 en la tabla 
+\f1\b Article. 
+\f0\b0 con los campos indicados.\
+Entregar\'e1 una sentencia seg\'fan la base de datos que se ocupe.\
+\
+
+\f1\b articles_controller.rb\
+
+\f0\b0 se debe definir una accion para cada m\'e9todo, en el controlador.\
+ah\'ed se establece si para un acci\'f3n se redirige a una vista en espec\'edfico.\
+\
+ENVIAR DATOS AL CONTROLADOR\
+
+\f1\b \
+
+\f0\b0 se debe crear el formulario que permita enviar datos\
+\
+
+\f1\b form_for(@variable) do |objeto cualquiera|\
+	obj.text_field :title, opciones\
+	obj.text_area :body, \{opciones\}\
+	\
+
+\f0\b0 Ruby coloca automaticamente las llaves \{ \}\
+\
+Ruby sabe donde dirige los datos del formulario con la @variable declarada\
+\
+VALIDACIONES\
+
+\f1\b \
+
+\f0\b0 corresponden al modelo\
+no al controlador\
+y ruby ya viene con metodos\
+\
+
+\f1\b validates :campo, \{presence: true\}\
+
+\f0\b0 valida que el campo no est\'e9 vac\'edo\
+
+\f1\b uniqueness: true\
+
+\f0\b0 valida que el campo no se guarde si ya existe uno igual\
+\
+ACTIVE RECORD\
+\
+interfaz que interpreta la comunicacion con las distintas bases de datos.\
+permite migrar de base de datos distintas sin tener que cambiar el codigo de la app.\
+\
+
+\f1\b rails console\
+
+\f0\b0 se puede probrar con este servidor\
+\
+
+\f1\b .all\
+
+\f0\b0 obtiene todos los registros\
+\
+
+\f1\b .all.count\
+.all.size\
+
+\f0\b0 muestra la cantidad de registros\
+\
+
+\f1\b .find(params[:id])\
+
+\f0\b0 obtiene un registo por id, un numero entero\
+\
+
+\f1\b .find(1)\
+
+\f0\b0 buscar en el ActiveRecord\
+\
+
+\f1\b .find_by(title: "blabla")\
+
+\f0\b0 buscar por otro campo, pero obtiene solo un registro\
+\
+
+\f1\b .where("title LIKE ?", "%palabra%")\
+
+\f0\b0 buscar por campos y obtener varios registros\
+\
+
+\f1\b .where("id = ?", params[:id])\
+
+\f0\b0 busca varios id\
+\
+
+\f1\b .where("id = ? AND title = ?", params[:id], params[:title])\
+
+\f0\b0 obtiene los registros, buscados por id y titulo\
+\
+
+\f1\b .where("id = ? OR title = ?", params[:id], params[:title])\
+
+\f0\b0 obtiene los registros, buscados por id \'f3 titulo\
+\
+
+\f1\b .where.not("id = 1")\
+
+\f0\b0 obtiene todos los registros, excepto el indicado\
+\
+STRONG PARAMS\
+\
+
+\f1\b ForbiddenAttributesError\
+
+\f0\b0 la acci\'f3n en el controlador no es segura\
+\
+
+\f1\b private\
+
+\f0\b0 todo lo que est\'e9 debajo, son m\'e9todos privados de la clase\
+\
+
+\f1\b def modelo_params\
+
+\f0\b0 	
+\f1\b params.require(:modelo).permit(:campo,)\
+
+\f0\b0 params, se llama porque eso se est\'e1 modificando\
+require, llama a los campos del modelo/tabla\
+permit, permite solo el llenado de los campos (:indicados)\
+esto es para evitar ataque sql por visits_count y otros\
+\
+esto reemplaza a 
+\f1\b (title: params[:article][:title],)
+\f0\b0 \
+\
+VISTAS ( PARCIALES )\
+\
+
+\f1\b @articles.each do |article|\
+end\
+
+\f0\b0 la 
+\f1\b @variable de clase 
+\f0\b0 es un enlace a los elementos de su array 
+\f1\b [title, body, etc]\
+.each\
+
+\f0\b0 selecciona/itera cada elemento del array. uno por vez.\
+
+\f1\b do\
+
+\f0\b0 ejecuta el ciclo, hasta que no hayan m\'e1s elementos.\
+
+\f1\b |variable local|\
+
+\f0\b0 guarda las peticiones del m\'e9todo\
+con la que se puede llamar a cada elemento del array luego de usar la variable local, de esta forma\
+
+\f1\b article.title\
+article.body\
+
+\f0\b0 \
+\
+CALLBACKS\
+\
+
+\f1\b before_action :au...\
+
+\f0\b0 e\
+\
+\
+SCAFFOLD\
+\
+
+\f1\b rails g scaffold\
+
+\f0\b0 es como otro modelo/tabla con campos\
+\
+
+\f1\b rails g scaffold Comment user:references article:references body:text\
+
+\f0\b0 un user puede tener varios comentarios\
+un comentario pertenece a un user\
+un articulo puede tener varios comentarios\
+un comentario pertenece a un articulo\
+un comentario tiene un campo de texto amplio\
+\
+
+\f1\b rake db:migrate\
+
+\f0\b0 cada vez que se crea un generador\
+\
+Genera una nueva vista 
+\f1\b /comments/new\
+
+\f0\b0 con campo de 
+\f1\b User 
+\f0\b0 y 
+\f1\b Article 
+\f0\b0 adem\'e1s de 
+\f1\b body\
+
+\f0\b0 Pero hay que configurar que se muestren los 
+\f1\b id\
+
+\f0\b0 y no como campos editables. Porque el usuario ya esta registrado\
+\
+
+\f1\b before_action :authenticate_user!\
+
+\f0\b0 permite que solo el user que este logueado pueda dejar comentarios\
+\
+RECURSOS ANIDADOS\
+\
+
+\f1\b resource :articles do\
+	resources :comments\
+end\
+
+\f0\b0 logra que los comentarios est\'e9n dentro de la vista de un articulo\
+
+\f1\b \
+
+\f0\b0 la vista ya no se ve del path 
+\f1\b /comments\
+
+\f0\b0 sino que desde 
+\f1\b articles/id/comments\
+
+\f0\b0 \
+
+\f1\b r\
+
+\f0\b0 l}

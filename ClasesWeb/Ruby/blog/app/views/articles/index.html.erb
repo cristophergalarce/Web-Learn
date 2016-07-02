@@ -2,7 +2,10 @@
 	<h1>
 		<%= link_to article.title, article %>
 	</h1>
+	<p>
+		Escrito por: <%= @article.user.email %>
+	</p>
 	<div>
 		<%= article.body %> - <%= link_to "Eliminar", article, method: :delete, class: "red" %>
 	</div>
-<% end %>
+<%end%>
