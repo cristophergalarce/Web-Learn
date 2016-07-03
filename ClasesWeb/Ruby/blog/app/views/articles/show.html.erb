@@ -20,11 +20,11 @@
 	<ul>
 		<% @article.comments.each do |comment| %>
 			<li>
-				<%= @comment.body %> - <%= @comment.user.email %>
+				<%= comment.body %> - <%= comment.user.email %>
 			</li>
 		<%end%>
 	</ul>
 </div>
 <div class="field">
-	<%= link_to "Editar", edit_article_path(@article), class:"lightblue" %>
+	<%= link_to "Atrás", articles_path %> - <%= link_to "Editar", edit_article_path(@article), class:"lightblue" %>
 </div>

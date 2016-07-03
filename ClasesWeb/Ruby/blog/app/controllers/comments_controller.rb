@@ -1,26 +1,30 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:update, :destroy]
   before_action :set_article
   before_action :authenticate_user!
-  # GET /comments
-  # GET /comments.json
-  def index
-    @comments = Comment.all
-  end
+  # restringe la conexion con el controlador solo al estar log
+  
+  # # GET /comments
+  # # GET /comments.json
+  # def index
+  #   @comments = Comment.all
+  # end
 
-  # GET /comments/1
-  # GET /comments/1.json
-  def show
-  end
+  # # GET /comments/1
+  # # GET /comments/1.json
+  # def show
+  # end
 
-  # GET /comments/new
-  def new
-    @comment = Comment.new
-  end
+  # # GET /comments/new
+  # def new
+  #   @comment = Comment.new
+  # end
 
-  # GET /comments/1/edit
-  def edit
-  end
+  # # GET /comments/1/edit
+  # def edit
+  # end
+
+  # se eliminan estas acciones porque no se usan
 
   # POST /comments
   # POST /comments.json

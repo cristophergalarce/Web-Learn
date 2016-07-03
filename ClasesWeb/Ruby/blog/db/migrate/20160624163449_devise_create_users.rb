@@ -6,6 +6,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
+      # para recuperar y resetear la pass
+      # una vez encriptada, no se puede desencriptar
+      # y saber cual es la pass. solo se puede resetear
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
@@ -13,6 +16,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.datetime :remember_created_at
 
       ## Trackable
+      # para saber cuantas veces se ha logueado el user
       t.integer  :sign_in_count, default: 0, null: false
       t.datetime :current_sign_in_at
       t.datetime :last_sign_in_at
@@ -30,6 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+      #propios campos
       t.string :name
       t.string :permission_level
 

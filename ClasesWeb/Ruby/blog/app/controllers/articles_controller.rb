@@ -10,8 +10,13 @@ class ArticlesController < ApplicationController
 	#GET /articles/:id
 	def show
 		# Encuentra un article por id
-		@article = Article.find(params[:id])
+		# @article = Article.find(params[:id])
+		# se fue a set_article
+
 		@comment = Comment.new
+
+		@article.update_visits_count
+		#se define este metodo en el modelo article
 	end
 
 	#GET /articles/new
@@ -20,11 +25,13 @@ class ArticlesController < ApplicationController
 	end
 	#POST /articles
 	def create
-		# @article = Article.new(title: params[:article][:title],
+		# obsolete @article = Article.new(title: params[:article][:title],
 							#	body: params[:article][:body])
-		# fix @article = current_user.articles.new(article_params)
-
-		@article = Article.new(article_params)
+		# obsolet @article = Article.new(article_params)
+		
+		@article = current_user.articles.new(article_params)
+		# current_user tiene has_many :articles
+		# por eso se le asocia .articles
 
 		if @article.save
 			redirect_to @article
@@ -38,7 +45,8 @@ class ArticlesController < ApplicationController
 	end
 	def update
 		# @article.update_attributes({title: 'Nuevo titulo'})
-		@article = Article.find(params[:id])
+		# @article = Article.find(params[:id])
+		# se fue a set_article
 		if @article.update(article_params)
 			redirect_to @article
 		else
@@ -46,16 +54,23 @@ class ArticlesController < ApplicationController
 		end
 	end
 	def edit
-		@article = Article.find(params[:id])
+		# @article = Article.find(params[:id])
+		# se fue a set_article
 	end
 
 	def destroy
-		@article = Article.find(params[:id])
+		# @article = Article.find(params[:id])
+		# se fue a set_article
 		@article.destroy #Elimina el obj de la db
 		redirect_to articles_path
 	end
 
 	private
+
+	def set_article
+		@article = Article.find(params[:id])
+		#re-factor y se elimina de :edit :show :update :destroy
+	end
 
 	def article_params
 		params.require(:article).permit(:title, :body)

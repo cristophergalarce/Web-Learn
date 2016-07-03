@@ -198,7 +198,7 @@ el controlador y su acci\'f3n\
 
 \f1\b resources :articles, only:/except: [:index, :create, :new, :show, :edit; :update, :destroy]\
 
-\f0\b0 e\
+\f0\b0 adem\'e1s se le puede indicar que esas llamadas se hagan s\'f3lo en las acciones indicadas o que no se hagan en las acciones indicadas\
 \
 CONTROLLERS\
 \
@@ -382,6 +382,11 @@ esto reemplaza a
 VISTAS ( PARCIALES )\
 \
 
+\f1\b partials > _nombre.html.erb\
+
+\f0\b0 \
+\
+
 \f1\b @articles.each do |article|\
 end\
 
@@ -406,16 +411,203 @@ con la que se puede llamar a cada elemento del array luego de usar la variable l
 article.body\
 
 \f0\b0 \
+AUTENTICACION DE USUARIOS\
+\
+rubygems.org\
+\
+
+\f1\b Gemfile > gem 'devise'\
+
+\f0\b0 instalar gema devise\
+\
+
+\f1\b bundle install\
+
+\f0\b0 installa las gemas indicadas\
+\
+
+\f1\b rails g devise:install\
+
+\f0\b0 genera devise a la app\
+\
+
+\f1\b <p class="notice"><%= notice %> & alert\
+
+\f0\b0 devise pide tener estos campos agregados\
+en el layout\
+\
+
+\f1\b rails g devise User\
+
+\f0\b0 generar el modelo\
+genera una migracion\
+toda la tabla de devise es mas robusta y sencilla que hacerlo uno de cero\
+\
+
+\f1\b ENCRYPTED_PASSWORD\
+
+\f0\b0 nunca se guarda en texto plano\
+para que nunca nadie las vea si entran a la base de datos\
+\
+
+\f1\b rails db:migrate\
+
+\f0\b0 luego de modificar la migracion y agregar campos\
+se corre la migracion\
+\
+
+\f1\b <% if user_signed_in? %>\
+
+\f0\b0 verifica si el usuario esta registrado\
+llamando al generador/modelo User\
+\
+
+\f1\b <% link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %>\
+
+\f0\b0 estos metodos de ayuda son de devise\
+hay que colocar el metodo\
+\
+
+\f1\b new_user_session_path\
+
+\f0\b0 muestra la vista/ruta de un usuario con su inicio de sesion\
+cuando el metodo es get, no se coloca\
+\
+
+\f1\b new_user_registration_path\
+
+\f0\b0 muestra la vista/ruta del formulario para registro\
+\
+
+\f1\b rails g devise:views\
+
+\f0\b0 genera las vistas necesarias para ser personalizadas\
+\
+
+\f1\b _to\
+
+\f0\b0 son helpers o metodos de ayuda\
+permiten generar controles para los formularios\
+y aceptan un hash de opciones\
+\
+
+\f1\b f.label :campo, "Texto", hash\
+
+\f0\b0 asi es la sintaxis\
+\
+
+\f1\b current_user.campo\
+
+\f0\b0 es un metodo global\
+\
+ASOCIACIONES 1 A MUCHOS\
+\
+1 article tiene 1 user\
+1 user tiene muchos articles\
+\
+
+\f1\b rails g migrations add_user_id_to_articles user:references\
+
+\f0\b0 permite modificar la db gracias al metodo def change\
+crea y a\'f1ade un campo para referenciar los articles al user\
+\
+
+\f1\b rake db:migrate\
+
+\f0\b0 lo de siempre. correr la migracion despues que ha sido generada\
+\
+
+\f1\b models > article.rb > belongs_to :user\
+
+\f0\b0 asocia la pertenencia de un articulo al usuario que lo crea\
+\
+
+\f1\b models > user.rb > has_many :articles\
+
+\f0\b0 asocia la pertenencia que el usuario tiene a sus articles creados\
+\
+
+\f1\b Article.last.user.email\
+
+\f0\b0 ahora se puede acceder al email del user\
+\
+
+\f1\b @article.user.email\
+
+\f0\b0 imprime el email del user para el articulo en cuestion\
+\
+
+\f1\b unless @article.user.nil?\
+
+\f0\b0 a menos que el user sea nulo, imprimira el anterior\
+entregar\'e1 false cuando un article haya sido creado por un user registrado\
+si el article fue creado si un user registrado, es nulo\
+y es un error\
+se soluciona con callbacks\
 \
 CALLBACKS\
 \
 
-\f1\b before_action :au...\
+\f1\b before_action :validate_user, except[:show, :index]\
 
-\f0\b0 e\
+\f0\b0 en articles_controller\
+\
+
+\f1\b private\
+	def validate_user\
+		redirect_to new_user_session_path, notice: "Necesitas iniciar sesion"\
+
+\f0\b0 asi funciona validate, pero devise ya tiene esto con authenticate\
+\
+
+\f1\b after_action\
+
+\f0\b0 se puede usar tambien\
+\
+
+\f1\b before_action :authenticate_user!, except[:show, :index]\
+
+\f0\b0 quiero que la gente vea mis articulos sin estar logueados\
+para las dem\'e1s acciones del CRUD si se necesita estar log in\
+\
+
+\f1\b before_action :set_article except[:index, :new, :create]\
+
+\f0\b0 otro callback popular\
+se hace re-factor porque todo el find params:id se mueve a un solo before action\
+y se exceptua el uso en las acciones donde no se hace esta llamada\
+\
+
+\f1\b private\
+	def set_article\
+		@article = Article.find(params[:id])\
+
+\f0\b0 permite hacer re-factor del codigo\
+cumple con el DRY\
+porque la llamada de Article[:id] se cumple en muchas acciones del CRUD y con este set_article se resume\
+\
+
+\f1\b before_save /validation /create\
+after_save ..., on: :create\
+
+\f0\b0 acciones que ocurren antes o despues de que ciertas cosas pasen en el modelo o el controlador\
+\
+
+\f1\b article.rb > before_save :set_visits_count\
+private\
+def set_visits_count\
+	self.visits_count = 0\
+
+\f0\b0 antes de que se guarde el article\
+reinicia las visitas a 0\
+\
+VER M\'c1S INDICACIONES EN article_controller y article model\
 \
 \
 SCAFFOLD\
+\
+permite generar un controlador que puede hacer todo el CRUD, incluye las vistas correspondientes a las acciones, el controlador, el modelo y la migracion.\
+Todo lo anterior, con un solo comando.\
 \
 
 \f1\b rails g scaffold\
@@ -427,8 +619,10 @@ SCAFFOLD\
 
 \f0\b0 un user puede tener varios comentarios\
 un comentario pertenece a un user\
+\
 un articulo puede tener varios comentarios\
 un comentario pertenece a un articulo\
+\
 un comentario tiene un campo de texto amplio\
 \
 
@@ -440,10 +634,10 @@ Genera una nueva vista
 \f1\b /comments/new\
 
 \f0\b0 con campo de 
-\f1\b User 
-\f0\b0 y 
-\f1\b Article 
-\f0\b0 adem\'e1s de 
+\f1\b User
+\f0\b0  y 
+\f1\b Article
+\f0\b0  adem\'e1s de 
 \f1\b body\
 
 \f0\b0 Pero hay que configurar que se muestren los 
@@ -456,10 +650,14 @@ Genera una nueva vista
 
 \f0\b0 permite que solo el user que este logueado pueda dejar comentarios\
 \
-RECURSOS ANIDADOS\
+VER CAMBIOS Y COMENTARIOS EN ARCHIVOS\
+\
+Eliminar el scaffold.scss\
+\
+RECURSOS ANIDADOS ***REPASAR***\
 \
 
-\f1\b resource :articles do\
+\f1\b routes > resources :articles do\
 	resources :comments\
 end\
 
@@ -473,8 +671,29 @@ end\
 \f0\b0 sino que desde 
 \f1\b articles/id/comments\
 
+\f0\b0 eliminar el codigo de 
+\f1\b /comments/index\
+
+\f0\b0 se crea el formulario de comment dentro 
+\f1\b articles/show\
+
+\f0\b0 \
+VER CAMBIOS EN ARCHIVOS\
+\
+el formulario ya no se puede generar unicamente con el comentario\
+por eso se debe generar entre el recurso padre y el anidado\
+MODIFICAR EL _FORM\
+agregar\
+
+\f1\b form_for([@article, @comment])\
+
 \f0\b0 \
 
-\f1\b r\
+\f1\b articles_controller\
+def show\
+@comment = Comment.new\
 
-\f0\b0 l}
+\f0\b0 agregar ese metodo\
+\
+\
+}
