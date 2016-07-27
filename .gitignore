@@ -1,2 +1,17 @@
+# Toda la linea que empiece con numeral '#' son comentarios.
+# Para ignorar archivos, usar el asterisco '*' punto '.' y la extension, como en el sgte ej:
+# *.html
+# Para ignorar directorios, escribir el nombre y un slash '/':
+# Sites/
+# Para ingorar el root
+# *~
+# Para ignorar archivos dentro de un directorio:
+# Sites/*.html
+# Para ignorar todo, excepto un formato de archivos o directorio:
+# !*.html
+# !Sites/
+# !Sites/*.html
 
-elalquimistapro/
+!.gitignore
+
+.DS_Store

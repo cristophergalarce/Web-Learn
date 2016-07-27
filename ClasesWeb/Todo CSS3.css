@@ -89,6 +89,8 @@ a {
 	/* este efecto se devuelve a su estado original si el mouse ya no está encima */
 	/* si estuviera en el estado hover el efecto no se devolveria */
 	/* necesito de otro estado como el hover para hacer otro efecto */
+	max-width: 100%;
+	/* obliga a la imagen a disponerse hasta el máximo de ancho del div */
 }
 .class img:hover
 {

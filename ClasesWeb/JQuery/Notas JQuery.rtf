@@ -7,6 +7,7 @@
 \f0\fs24 \cf0 Lo fundamental es que JQuery permite seleccionar objetos igual a como se hace en CSS.\
 Y se les puede otorgar m\'e9todos diferentes.\
 \
+\
 DOCUMENT ON READY\
 \
 
@@ -23,6 +24,7 @@ DOCUMENT ON READY\
 \f1\b .on('ready', function() \{todo\});\
 
 \f0\b0 cuando el objeto est\'e9 cargado, se ejecutar\'e1 todo el c\'f3digo dentro de la funcion\
+\
 \
 SELECTORES\
 \
@@ -46,10 +48,6 @@ SELECTORES\
 
 \f0\b0 selecciona los div con la clase indicada\
 \
-
-\f1\b $\
-
-\f0\b0 i\
 \
 SELECTORES EN VARIABLES\
 \
@@ -59,8 +57,26 @@ SELECTORES EN VARIABLES\
 \f0\b0 permite guardar en una variable el (objeto) HTML\
 para evitar escribir tanto c\'f3digo complejo\
 \
+\
 GETTERS Y SETTERS\
 \
+obtener y asignar valores a atributos\
+\
+
+\f1\b .html();\
+
+\f0\b0 es un getter y setter\
+sirve para asignar etiquetas de html y para obtener lo que tenga el objeto al que esta suscrito\
+\
+
+\f1\b .attr("class");\
+
+\f0\b0 se transforma en getter tambien.\
+\
+
+\f1\b .css();\
+
+\f0\b0 -\
 \
 \
 METODOS\
@@ -98,4 +114,104 @@ METODOS\
 
 \f1\b .eq(3);\
 
-\f0\b0 selecciona el (hermano) indicado}
+\f0\b0 selecciona el (hermano) indicado\
+\
+
+\f1\b .attr("class", "nombreClase");\
+
+\f0\b0 asigna una clase al objeto\
+\
+
+\f1\b .on("click", function()\{\
+\
+\});\
+
+\f0\b0 al hacer click sobre el objeto ejecuta la funcion anonima\
+\
+\
+METODO CSS\
+\
+
+\f1\b .css();\
+
+\f0\b0 solo sirve para una propiedad css\
+no para varias\
+\
+
+\f1\b .css('background', '#FFF');\
+
+\f0\b0 asi\
+\
+
+\f1\b var nombreVariable = \{\
+	'color': 'red',\
+	'background': 'gray'\
+\}\
+\
+.css(nombreVariable);\
+
+\f0\b0 permite asignar varias propiedades de css a un objeto\
+\
+
+\f1\b .css(\{\
+	'color': 'red',\
+	'background': 'gray'\
+\});\
+
+\f0\b0 o tambien se puede llevar el objeto JSON dentro del metodo\
+\
+\
+CLASES CSS\
+\
+
+\f1\b .addClass("nombreClase");\
+
+\f0\b0 a\'f1ade la clase que se le asigna al objeto\
+\
+
+\f1\b .removeClass("nombreClase");\
+
+\f0\b0 quita la clase indicada al objeto\
+\
+
+\f1\b .toggleClass("nombreClase");\
+
+\f0\b0 a\'f1ade si no tiene la clase y la quita si la tiene\
+conviene usarla con 
+\f1\b .on("click")\
+
+\f0\b0 \
+
+\f1\b .hasClass("nombreClase")\
+
+\f0\b0 confirma que el objeto tiene la clase indicada\
+sirve usarla con 
+\f1\b if 
+\f0\b0 y a\'f1adir una funcion\
+\
+\
+DIMENSIONES\
+\
+
+\f1\b .width();\
+
+\f0\b0 obtiene la propiedad del objeto\
+pero tambien se puede asignar un nuevo width de ese objeto\
+\
+
+\f1\b .position()\
+
+\f0\b0 no entendi\
+\
+
+\f1\b .offset()\
+
+\f0\b0 repasar\
+\
+\
+METODO ATTR\
+\
+
+\f1\b .\
+
+\f0\b0 o}

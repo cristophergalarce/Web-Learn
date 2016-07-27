@@ -5,25 +5,33 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8"> <!-- para la codificación occidental hispana -->
+	<meta charset="UTF-8"> <!-- para la codificación occidental hispana y otros en el navegador-->
 
 	<!-- meta charset es para el navegador -->
 <!-- etiqueta sin contenido, solo lleva atributo y valor y se cierra con /> -->
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-<!-- viewport primer valor asume el ancho del device, se separa con comas y espacio para siguiente valor que escala el contenido en el ancho minimo y luego en el ancho maximo -->
+<!-- en content el primer valor asume el ancho del device, se separa con comas y espacio para siguiente valor que restringe al usuario ampliar o alejar la vista, el sgte es para declarar la escala de pantalla, la sgte escala el contenido en el ancho minimo y luego en el ancho maximo -->
 	<meta name="viewport" content="width=device-width, minimun-scale=1, maximun-scale=1" />
 
 	<!-- normalize normaliza a los navegadores -->
-	<link rel="stylesheet" href="normalize.css" />
+	<link rel="stylesheet" type="text/css" href="normalize.css" />
 
-	<!-- cualquier link -->
-	<link rel="stylesheet" href="css/main.css">
+	<!-- vincular hojas de css-->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 
-	<title>Notas de Web</title>
+	<!-- vincular scripts de javacripts -->
+	<link rel="stylesheet" type="application/javascript" href="css/script.js">
+
+	<title>Notas de HTML5</title>
 </head>
 <body>
 	<nav> <!-- menu de navegacion -->
-		
+		<!-- ul>li*3>a más tab sublime creará el marcado requerido -->
+		<ul>
+			<li><a href=""></a></li> <!-- a los li de un ul el navegador les da un margin bottom y padding left -->
+			<li><a href=""></a></li>
+			<li><a href=""></a></li>
+		</ul>
 	</nav>
 
 	<figure> <!-- imagenes son una figura -->
