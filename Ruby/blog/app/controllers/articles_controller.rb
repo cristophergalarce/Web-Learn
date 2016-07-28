@@ -6,6 +6,8 @@ class ArticlesController < ApplicationController
 	def index
 		# Obtiene todos los articles
 		@articles = Article.all
+		@article = current_user.email
+		#permite mostrar el email del user en view index con clase @article
 	end
 	#GET /articles/:id
 	def show
@@ -29,7 +31,7 @@ class ArticlesController < ApplicationController
 							#	body: params[:article][:body])
 		# obsolet @article = Article.new(article_params)
 		
-		@article = current_user.articles.new(article_params)
+		@article = current_user.email.articles.new(article_params)
 		# current_user tiene has_many :articles
 		# por eso se le asocia .articles
 
@@ -68,7 +70,7 @@ class ArticlesController < ApplicationController
 	private
 
 	def set_article
-		@article = Article.find(params[:id])
+		@article = Article.find(params[:id]) #cambiar a :id ...
 		#re-factor y se elimina de :edit :show :update :destroy
 	end
 

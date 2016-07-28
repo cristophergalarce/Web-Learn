@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   # def edit
   # end
 
-  # se eliminan estas acciones porque no se usan
+  # se eliminan estas acciones porque no se usan, despues de res..comm.. only, cre, des, up
 
   # POST /comments
   # POST /comments.json
