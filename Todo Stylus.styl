@@ -1,11 +1,13 @@
 // Importar otras hojas de estilos
 
+// stylus -u nib -w stylus/nuevosEstilos.styl -o css/nuevosEstilos.css
+
 @import "nib"
 /* importante importar nib para mixins y más */
 @import "normalize.styl"
 /* nib ya trae normalize */
 @import "fonts.styl"
-/* el .css que entrega iconmoon se guarda con .styl y listo */
+/* el .css que entrega iconmoon/google fonts se guarda con .styl y listo */
 
 // Variables
 amarillo = #FFD400
@@ -140,7 +142,8 @@ y con inline-block se colocan uno al lado del otro
 		animation 20s rotacion infinite linear
 		background url(../img/universo_logo.png) no-repeat center center/100% auto
 		box-sizing border-box
-		content ''
+		content '' 
+		// content siempre va con pseudo elementos before, after etc
 		position absolute
 		width 100%
 		height 100%

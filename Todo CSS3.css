@@ -136,7 +136,7 @@ ul li a { /* ya es inline */
 }
 .class:last-child:before /* antes del contenido */
 {
-
+	content: url(archivo.formato);
 }
 .class:nth-child(odd){
 /* dentro del parentesis se selecciona con numeros los hijos
@@ -152,4 +152,27 @@ se invoca el media query que afecte al monitor y con tamaños minimos */
 		display: block;
 		/* hace aparecer lo que está display:none más arriba */
 	}
+}
+
+/* RELACION CON EL ARCHIVO "TODO HTML5" */
+
+/* modifica la vista por defecto del input range volviendo a 0. aqui mismo se dan nuevos estilos */
+inputrange{
+	-webkit-appearance: none;
+}
+
+/* modifica la vista por defecto de la manejador del input range volviendola a 0. aqui mismo se dan nuevos estilos */
+inputrange::-webkit-slider-thumb{
+	-webkit-appearance: none;
+}
+
+p{
+	resize: both;
+	/*entrega un manejador esquinero para redimensionar una caja*/
+	overflow: hidden;
+	/*sirve para esconder el contenido fuera de la caja indicada*/
+}
+form{
+	/* width | style | color */
+	outline: 1px solid color;
 }
